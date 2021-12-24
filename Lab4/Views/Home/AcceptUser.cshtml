@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Lab4.Models.User>
+
+@{
+    ViewBag.Title = "AcceptUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Accept User</h2>
+
+@using (Html.BeginForm("AcceptUser", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            @Html.Label("Accepts", "Користувачі, що запитали запрошення до мене в друзі:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("nickname", new SelectList(ViewBag.ListInvitesToMe), "Виберіть користувача", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="LoginUser" value="Підтвердити дружбу" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+@using (Html.BeginForm("AcceptMeUser", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <hr />
+        <div class="form-group">
+            @Html.Label("AcceptsMe", "Користувачі, що запросили мене в свої друзі:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("nickname", new SelectList(ViewBag.ListInvitesMe), "Виберіть користувача", new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" name="LoginUser" value="Підтвердити дружбу" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+
+

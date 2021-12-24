@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Lab4.Models.User>
+
+@{
+    ViewBag.Title = "FriendsUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Friends of User</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Мої друзі:")
+        </th>
+        
+    </tr>
+
+@foreach (string item in ViewBag.MyFriends) {
+    <tr>
+        <td>
+            @Html.Label(item, item, htmlAttributes: new { @class = "control-label col-md-2" })
+        </td>
+    </tr>
+}
+</table>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Я є другом для:")
+        </th>
+        
+    </tr>
+
+    @foreach (string item in ViewBag.FriendsMe){
+        <tr>
+            <td>
+                @Html.Label(item, item, htmlAttributes: new { @class = "control-label col-md-2" })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<Lab4.Models.Message>
+
+@{
+    ViewBag.Title = "DialogUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Show Dialog</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayName("Повідомлення:")
+        </th>
+        <th></th>
+    </tr>
+    @foreach (string item in ViewBag.Dialog)
+    {
+        <tr>
+            <td>
+                @Html.Label("line", item)
+            </td>
+        </tr>
+    }
+</table>
+
+    @using (Html.BeginForm("ShowDialogUser", "Home", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.Label("Повідомлення", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.TextArea("MessageBody", "", 5, 100, null)
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" name="ShowMessageUser" value="Надіслати" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+
+
+

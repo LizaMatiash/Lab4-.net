@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Lab4.Models.User>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Select Dialog</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nickname)
+        </th>
+        <th></th>
+    </tr>
+    @using (Html.BeginForm("SelectDialogUser", "Home", FormMethod.Post))
+    {
+        foreach (string item in ViewBag.Friends)
+        {
+            <tr>
+                <td>
+                    <input type="submit" name="nickname" value=@item />
+                </td>
+            </tr>
+        }
+    }
+
+    </table>
